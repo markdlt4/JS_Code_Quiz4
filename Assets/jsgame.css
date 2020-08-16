@@ -1,0 +1,34 @@
+.choice-container {
+    display: flex;
+    margin-bottom: .5rem;
+    width: 100%;
+    font-size: 2rem;
+    border: 0.3rem solid navy;
+    background-color: oldlace;
+}
+
+.choice-container:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(7, 7, 171);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+}
+
+.choice-prefix {
+    padding: 1.5rem 2.5rem;
+    background-color: royalblue;
+    color: snow;
+}
+
+.choice-text {
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.correct {
+    background-color: rgb(38, 191, 7);
+}
+
+.incorrect {
+    background-color: rgb(247, 44, 64);
+}
