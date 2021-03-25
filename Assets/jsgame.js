@@ -1,3 +1,4 @@
+const end = document.getElementById('game');
 var timeEl = document.querySelector(".time");
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
@@ -106,11 +107,22 @@ if (selectedAnswer === currentQuestion.answer){
 else {
     secondsLeft= secondsLeft - 5;
 }
-getNewQuestion()
+console.log(questionCounter)
+if (questionCounter > 4) {
+endGame()
+}
+else {
+    getNewQuestion()
+}
+//getNewQuestion()
     });
 });
 
 buttonStart.addEventListener('click', e =>{
     startGame();
 })
-
+function endGame() {
+const initialForm= document.createElement('form')
+end.innerHTML=initialForm
+end.append(initialForm)
+}
