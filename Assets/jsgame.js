@@ -101,7 +101,10 @@ console.log("click")
        // const classToApply =
        //     selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 if (selectedAnswer === currentQuestion.answer){
-    score++
+    score++ 
+}
+else {
+    secondsLeft= secondsLeft - 5;
 }
 getNewQuestion()
     });
