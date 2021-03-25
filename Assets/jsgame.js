@@ -1,12 +1,14 @@
+var timeEl = document.querySelector(".time");
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
+const buttonStart = document.getElementById("Start")
 
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
 let questionCounter = 0;
 let availableQuestions = [];
-
+let secondsLeft = 60;
 let questions = [{
         question: "Commonly used data types DO NOT include:",
         choice1: "Strings",
@@ -57,17 +59,23 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = secondsLeft + "Seconds Left";
+    
+        if(secondsLeft === 0) {
+          clearInterval(timerInterval);
+         // sendMessage();
+        }
+    
+      }, 1000);
     getNewQuestion();
 };
 
 getNewQuestion = () => {
 
-    if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
-        return window.location.assign("/end.html");
-    }
-    questionCounter++;
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[questionIndex];
+    //const questionIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[questionCounter];
     question.innerText = currentQuestion.question;
 
     choices.forEach((choice) => {
@@ -75,27 +83,31 @@ getNewQuestion = () => {
         choice.innerText = currentQuestion['choice' + number];
     });
 
-    availableQuestions.splice(questionIndex, 1);
+   //availableQuestions.splice(questionIndex, 1);
 
-    acceptingAnswers = true;
+    //acceptingAnswers = true; 
+    questionCounter++;
 };
 
 choices.forEach((choice) => {
     choice.addEventListener('click', e => {
-        if (!acceptingAnswers) return;
-
-        acceptingAnswers = false;
+      //  if (!acceptingAnswers) return;
+console.log("click")
+       // acceptingAnswers = false;
         const selectedChoice = e.target;
         const selectedAnswer = selectedChoice.dataset['number'];
 
         console.log(selectedAnswer == currentQuestion.answer);
-        const classToApply =
-            selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
-
-
-
-
+       // const classToApply =
+       //     selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
+if (selectedAnswer === currentQuestion.answer){
+    score++
+}
+getNewQuestion()
     });
 });
 
-startGame();
+buttonStart.addEventListener('click', e =>{
+    startGame();
+})
+
