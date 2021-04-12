@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>JavaScript Quiz!</title>
+    <link rel="stylesheet" href="jsquiz.css" />
+    <link rel="stylesheet" href="jsgame.css" />
+
+</head>
+
+<body>
+    <div class="container">
+        <div id="game" class="justify-center flex-column">
+            <h2>Game Over</h2>
+            <h2>Your Score: <span id="scoreNum">0</span></h2>
+            <a class="btn" href="./jsquiz.html">Play</a>
+        </div>
+    </div>
+    <script src="./jsgame.js"></script>
+    <script>
+        let x = localStorage.getItem('score');
+        document.getElementById('scoreNum').innerHTML = x;
+        </script>
+</body>
+
+</html>
